@@ -220,6 +220,9 @@ footer .social-icons a {
   .nav__link {
     font-size: 20px;
   }
+  .nav__link:hover {
+    color: #000000;
+  }
   .nav-logo img {
     width: 60px !important;
     height: 60px !important;

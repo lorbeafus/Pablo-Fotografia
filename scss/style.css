@@ -48,7 +48,7 @@ body {
   transition: color 0.3s ease;
 }
 .nav__link:hover {
-  color: #000000;
+  color: #b70e0e;
   text-decoration: none;
 }
 
@@ -62,7 +62,7 @@ body {
   padding: 0.5rem;
 }
 .hamburger:hover .hamburger__line {
-  background-color: #000000;
+  background-color: #b70e0e;
 }
 .hamburger__line {
   width: 25px;
@@ -220,6 +220,9 @@ footer .social-icons a {
   }
   .nav__link {
     font-size: 20px;
+  }
+  .nav__link:hover {
+    color: #000000;
   }
   .nav-logo img {
     width: 60px !important;

@@ -49,8 +49,14 @@
         right: 0;
     }
 
+    // Estilos de los enlaces dentro del menú móvil
     .nav__link {
         font-size: $font-size-xl;
+
+        // Hover específico para el menú móvil (negro)
+        &:hover {
+            color: $secondary-color; // Negro al pasar el mouse en el menú móvil
+        }
     }
 
     // Reducir tamaño del logo en móvil
