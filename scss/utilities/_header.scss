@@ -43,7 +43,7 @@
     transition: color 0.3s ease;
 
     &:hover {
-        color: $secondary-color; // Negro al pasar el mouse
+        color: $primary-color; // Rojo al pasar el mouse
         text-decoration: none;
     }
 }
@@ -59,7 +59,7 @@
     padding: 0.5rem;
 
     &:hover .hamburger__line {
-        background-color: $secondary-color; // Negro al pasar el mouse
+        background-color: $primary-color; // Rojo al pasar el mouse
     }
 
     &__line {
