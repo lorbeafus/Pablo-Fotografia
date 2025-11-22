@@ -1,0 +1,34 @@
+// ========================================
+// STYLE PRINCIPAL 
+// ========================================
+// Este archivo importa todos los módulos SCSS
+
+// 1. Variables (DEBE IR PRIMERO)
+@use 'bases/variables' as *;
+
+// 2. Mixins 
+@use 'bases/mixin' as *;
+
+// 3. Estilos base y reset
+@use 'bases/generales';
+
+// 4. Componentes
+@use 'utilities/header';
+@use 'utilities/main';
+@use 'utilities/footer';
+
+// 5. Media queries 
+@use 'bases/queries';
+
+// 6. Importaciones externas (después de @use)
+
+/*Enlace fuente*/
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Cinzel:wght@400..900&family=Henny+Penny&family=Indie+Flower&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Paprika&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+// 7. Clases personalizadas
+.cinzel {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 40px;
+}

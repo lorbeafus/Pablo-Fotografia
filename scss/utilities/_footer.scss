@@ -1,0 +1,68 @@
+// ========================================
+//                 FOOTER
+// ========================================
+
+@use '../bases/variables' as *;
+
+footer {
+
+    // Contenedor principal del footer
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 20vh;
+        padding: 20px;
+        background-color: $primary-color;
+        font-size: $font-size-md;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    // Área inferior del footer (copyright, redes, etc.)
+    .footer-bottom {
+        display: flex; // alineamos texto e iconos en una fila
+        align-items: center; // alineación vertical
+        justify-content: space-between; // separa texto a la izquierda y redes a la derecha
+        padding: 20px;
+        background-color: $primary-color;
+        color: $tertiary-color;
+        text-align: left; // ya no centrado
+    }
+
+    .footer-bottom h2 {
+        font-size: inherit; // toma el mismo tamaño que su contenedor (p o body)
+        margin: 0; // opcional, para que no haya espacio extra
+    }
+
+    // Secciones genéricas dentro del footer
+    .footer-section {
+        margin-bottom: 20px;
+    }
+
+    // Bloque de enlaces a redes sociales
+    // Bloque de enlaces a redes sociales
+    .social-links {
+        display: flex;
+        flex-direction: row; // <--- Cambiar a row para que estén lado a lado
+        align-items: center; // <--- Centrar verticalmente
+        gap: 12px; // <--- Espacio entre el texto y los iconos
+        margin-bottom: 0; // (Opcional) quitar margen si ya no es necesario
+    }
+
+    // Contenedor de los iconos de redes sociales
+    .social-icons {
+        display: inline-flex; // asegura flex en el contenedor
+        gap: 10px;
+    }
+
+    // Cada enlace de icono
+    .social-icons a {
+        display: flex;
+        font-size: $font-size-md;
+        justify-content: center;
+        align-items: center; // centra verticalmente el <i>
+        color: $tertiary-color; // color blanco (o el que defina la variable)
+        text-decoration: none;
+    }
+}

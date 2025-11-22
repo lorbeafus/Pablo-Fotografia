@@ -1,0 +1,71 @@
+// ========================================
+//                 HEADER
+// ========================================
+
+@use '../bases/variables' as *;
+
+.barra-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: $secondary-color;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    h1 {
+        font-family: 'Nunito', serif;
+        font-size: $font-size-xxl;
+        font-weight: 700;
+        color: $tertiary-color;
+    }
+
+}
+
+// Enlaces de navegación
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__link {
+    color: $tertiary-color;
+    text-decoration: none;
+    font-size: $font-size-lg;
+    font-weight: 500;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $secondary-color; // Negro al pasar el mouse
+        text-decoration: none;
+    }
+}
+
+// Botón hamburguesa - OCULTO en desktop
+.hamburger {
+    display: none; // Oculto por defecto en desktop
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+
+    &:hover .hamburger__line {
+        background-color: $secondary-color; // Negro al pasar el mouse
+    }
+
+    &__line {
+        width: 25px;
+        height: 3px;
+        background-color: $tertiary-color; // Blanco por defecto
+        transition: all 0.3s ease;
+    }
+}

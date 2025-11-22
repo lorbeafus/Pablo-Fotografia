@@ -1,0 +1,18 @@
+{
+  "name": "editable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "sass scss/style.scss assets/CSS/style.css",
+    "watch:css": "sass --watch scss/style.scss:assets/CSS/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.94.2"
+  }
+}

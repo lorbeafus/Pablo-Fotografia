@@ -1,0 +1,17 @@
+// ========================================
+//            ESTILOS GENERALES 
+// ========================================
+
+@use 'variables' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1b1b1b;
+    color: $tertiary-color;
+    font-family: "Nunito", serif;
+}
