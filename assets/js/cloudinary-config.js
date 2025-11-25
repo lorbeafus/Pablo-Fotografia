@@ -3,7 +3,8 @@ export const cloudinaryConfig = {
     cloudName: 'dhuqjaadf',
     uploadPreset: 'Pablo-fotografia',
     folder: 'Pablo-fotografia',
-    apiKey: '576554685676557'
+    apiKey: '834741959294556',
+    apiSecret: 'cf59diaxs3CJu6Qp30riDGkDyQ8'
 };
 
 // Cloudinary Upload Widget URL
