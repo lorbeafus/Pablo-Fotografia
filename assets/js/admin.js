@@ -1,17 +1,10 @@
-// Import Firebase modules
-import { auth, storage, db } from './firebase-config.js';
+// Import Firebase modules (Authentication and Firestore only)
+import { auth, db } from './firebase-config.js';
 import { 
     signInWithEmailAndPassword, 
     signOut, 
     onAuthStateChanged 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { 
-    ref, 
-    uploadBytesResumable, 
-    getDownloadURL, 
-    listAll,
-    deleteObject 
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 import { 
     collection, 
     addDoc, 
@@ -21,6 +14,9 @@ import {
     query,
     where 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// Import Cloudinary config
+import { cloudinaryConfig, CLOUDINARY_UPLOAD_URL } from './cloudinary-config.js';
 
 // ===== STATE MANAGEMENT =====
 let currentCategory = 'bodas';
@@ -356,36 +352,43 @@ async function compressImage(file, maxWidth = 1920, quality = 0.8) {
 async function uploadFile(file, originalName) {
     const timestamp = Date.now();
     const fileName = `${timestamp}_${originalName}`;
-    const storageRef = ref(storage, `${currentCategory}/${fileName}`);
     
-    // Upload file
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    // Create FormData for Cloudinary upload
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', cloudinaryConfig.uploadPreset);
+    formData.append('folder', `${cloudinaryConfig.folder}/${currentCategory}`);
+    formData.append('public_id', fileName.replace(/\.[^/.]+$/, '')); // Remove extension
     
-    return new Promise((resolve, reject) => {
-        uploadTask.on('state_changed',
-            (snapshot) => {
-                // Progress monitoring (optional)
-            },
-            (error) => {
-                reject(error);
-            },
-            async () => {
-                // Upload completed, get download URL
-                const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                
-                // Save metadata to Firestore
-                await addDoc(collection(db, 'images'), {
-                    category: currentCategory,
-                    url: downloadURL,
-                    fileName: fileName,
-                    uploadedAt: new Date(),
-                    uploadedBy: currentUser.email
-                });
-                
-                resolve();
-            }
-        );
-    });
+    try {
+        // Upload to Cloudinary
+        const response = await fetch(CLOUDINARY_UPLOAD_URL, {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (!response.ok) {
+            throw new Error('Error al subir imagen a Cloudinary');
+        }
+        
+        const data = await response.json();
+        
+        // Save metadata to Firestore
+        await addDoc(collection(db, 'images'), {
+            category: currentCategory,
+            url: data.secure_url,
+            publicId: data.public_id,
+            fileName: fileName,
+            uploadedAt: new Date(),
+            uploadedBy: currentUser.email
+        });
+        
+        return data.secure_url;
+        
+    } catch (error) {
+        console.error('Error uploading to Cloudinary:', error);
+        throw error;
+    }
 }
 
 function updateProgress(percent, text) {
@@ -449,7 +452,7 @@ function createGalleryItem(image) {
         <img src="${image.url}" alt="${image.fileName}" loading="lazy">
         <div class="gallery-overlay">
             <div class="gallery-actions">
-                <button class="btn-delete" data-id="${image.id}" data-filename="${image.fileName}">
+                <button class="btn-delete" data-id="${image.id}" data-publicid="${image.publicId || ''}">
                     <i class="fas fa-trash"></i>
                     Eliminar
                 </button>
@@ -460,7 +463,7 @@ function createGalleryItem(image) {
     // Delete handler
     item.querySelector('.btn-delete').addEventListener('click', (e) => {
         e.stopPropagation();
-        deleteImage(image.id, image.fileName);
+        deleteImage(image.id, image.publicId);
     });
     
     // Click to view full image
@@ -471,7 +474,7 @@ function createGalleryItem(image) {
     return item;
 }
 
-async function deleteImage(imageId, fileName) {
+async function deleteImage(imageId, publicId) {
     if (!confirm('¿Estás seguro de que quieres eliminar esta imagen?')) {
         return;
     }
@@ -479,15 +482,17 @@ async function deleteImage(imageId, fileName) {
     try {
         showLoading(true);
         
-        // Delete from Storage
-        const storageRef = ref(storage, `${currentCategory}/${fileName}`);
-        await deleteObject(storageRef);
+        // Note: Deleting from Cloudinary requires server-side implementation
+        // For now, we'll just delete from Firestore
+        // The image will remain in Cloudinary but won't be shown in the gallery
         
         // Delete from Firestore
         await deleteDoc(doc(db, 'images', imageId));
         
         // Reload gallery
         await loadGallery();
+        
+        alert('Imagen eliminada de la galería');
         
     } catch (error) {
         console.error('Error deleting image:', error);
