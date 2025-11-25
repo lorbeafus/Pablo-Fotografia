@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Pablo Fotografía</title>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="./assets/IMG/Pablo logo (500 x500 px).png" alt="Logo" class="login-logo">
+                <h1>Panel de Administración</h1>
+                <p>Pablo Fotografía Profesional</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i>
+                        Correo Electrónico
+                    </label>
+                    <input type="email" id="email" placeholder="admin@ejemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i>
+                        Contraseña
+                    </label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Iniciar Sesión
+                </button>
+                <div id="loginError" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel" style="display: none;">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <img src="./assets/IMG/Pablo logo (500 x500 px).png" alt="Logo" class="header-logo">
+                    <h1>Panel de Administración</h1>
+                </div>
+                <div class="header-right">
+                    <span id="userEmail" class="user-email"></span>
+                    <button id="logoutBtn" class="btn-logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Category Tabs -->
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="bodas">
+                    <i class="fas fa-rings-wedding"></i>
+                    Bodas
+                </button>
+                <button class="tab-btn" data-category="15años">
+                    <i class="fas fa-cake-candles"></i>
+                    15 Años
+                </button>
+                <button class="tab-btn" data-category="vistas">
+                    <i class="fas fa-mountain-sun"></i>
+                    Vistas
+                </button>
+                <button class="tab-btn" data-category="books">
+                    <i class="fas fa-book-open"></i>
+                    Books
+                </button>
+            </div>
+
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-card">
+                    <h2>
+                        <i class="fas fa-cloud-arrow-up"></i>
+                        Subir Fotos
+                    </h2>
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <p class="upload-text">Arrastra y suelta tus imágenes aquí</p>
+                        <p class="upload-subtext">o haz clic para seleccionar archivos</p>
+                        <input type="file" id="fileInput" multiple accept="image/*" hidden>
+                        <button type="button" class="btn-select" id="selectFilesBtn">
+                            <i class="fas fa-folder-open"></i>
+                            Seleccionar Archivos
+                        </button>
+                    </div>
+
+                    <!-- Preview Area -->
+                    <div id="previewArea" class="preview-area" style="display: none;">
+                        <h3>Vista Previa</h3>
+                        <div id="previewGrid" class="preview-grid"></div>
+                        <div class="upload-actions">
+                            <button id="uploadBtn" class="btn-upload">
+                                <i class="fas fa-upload"></i>
+                                Subir <span id="fileCount">0</span> Fotos
+                            </button>
+                            <button id="cancelBtn" class="btn-cancel">
+                                <i class="fas fa-times"></i>
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div id="progressContainer" class="progress-container" style="display: none;">
+                        <div class="progress-info">
+                            <span id="progressText">Subiendo...</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="gallery-section">
+                <div class="gallery-header">
+                    <h2>
+                        <i class="fas fa-images"></i>
+                        Galería - <span id="currentCategory">Bodas</span>
+                    </h2>
+                    <div class="gallery-stats">
+                        <span id="imageCount">0 imágenes</span>
+                    </div>
+                </div>
+                <div id="gallery" class="gallery-grid">
+                    <!-- Images will be loaded here -->
+                </div>
+                <div id="emptyGallery" class="empty-gallery">
+                    <i class="fas fa-image"></i>
+                    <p>No hay imágenes en esta categoría</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Cargando...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="./assets/js/admin.js"></script>
+</body>
+
+</html>
