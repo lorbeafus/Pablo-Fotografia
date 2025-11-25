@@ -68,6 +68,11 @@
     .nav-logo h1 {
         font-size: $font-size-lg;
     }
+
+    // Grid de productos a 1 columna en tablets
+    .productos-contenedor {
+        grid-template-columns: 1fr !important;
+    }
 }
 
 // Media query para móviles pequeños

@@ -230,6 +230,9 @@ footer .social-icons a {
   .nav-logo h1 {
     font-size: 18px;
   }
+  .productos-contenedor {
+    grid-template-columns: 1fr !important;
+  }
 }
 @media (max-width: 480px) {
   .nav-logo h1 {
