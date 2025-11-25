@@ -258,11 +258,24 @@ uploadBtn.addEventListener('click', async () => {
         let uploadedFiles = 0;
         
         for (const file of selectedFiles) {
-            await uploadFile(file);
+            // Compress image before uploading
+            updateProgress(
+                Math.round((uploadedFiles / totalFiles) * 100), 
+                `Comprimiendo ${uploadedFiles + 1} de ${totalFiles} fotos...`
+            );
+            
+            const compressedFile = await compressImage(file);
+            
+            updateProgress(
+                Math.round((uploadedFiles / totalFiles) * 100), 
+                `Subiendo ${uploadedFiles + 1} de ${totalFiles} fotos...`
+            );
+            
+            await uploadFile(compressedFile, file.name);
             uploadedFiles++;
             
             const percent = Math.round((uploadedFiles / totalFiles) * 100);
-            updateProgress(percent, `Subiendo ${uploadedFiles} de ${totalFiles} fotos...`);
+            updateProgress(percent, `Completado ${uploadedFiles} de ${totalFiles} fotos`);
         }
         
         // Success
@@ -283,9 +296,66 @@ uploadBtn.addEventListener('click', async () => {
     }
 });
 
-async function uploadFile(file) {
+// ===== IMAGE COMPRESSION =====
+async function compressImage(file, maxWidth = 1920, quality = 0.8) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        
+        reader.onload = (e) => {
+            const img = new Image();
+            
+            img.onload = () => {
+                // Calculate new dimensions
+                let width = img.width;
+                let height = img.height;
+                
+                if (width > maxWidth) {
+                    height = (height * maxWidth) / width;
+                    width = maxWidth;
+                }
+                
+                // Create canvas
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                
+                // Draw and compress
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                // Convert to blob
+                canvas.toBlob(
+                    (blob) => {
+                        if (blob) {
+                            // Create new file with compressed data
+                            const compressedFile = new File([blob], file.name, {
+                                type: 'image/jpeg',
+                                lastModified: Date.now()
+                            });
+                            
+                            console.log(`Compresión: ${(file.size / 1024 / 1024).toFixed(2)}MB → ${(blob.size / 1024 / 1024).toFixed(2)}MB`);
+                            resolve(compressedFile);
+                        } else {
+                            reject(new Error('Error al comprimir imagen'));
+                        }
+                    },
+                    'image/jpeg',
+                    quality
+                );
+            };
+            
+            img.onerror = () => reject(new Error('Error al cargar imagen'));
+            img.src = e.target.result;
+        };
+        
+        reader.onerror = () => reject(new Error('Error al leer archivo'));
+        reader.readAsDataURL(file);
+    });
+}
+
+async function uploadFile(file, originalName) {
     const timestamp = Date.now();
-    const fileName = `${timestamp}_${file.name}`;
+    const fileName = `${timestamp}_${originalName}`;
     const storageRef = ref(storage, `${currentCategory}/${fileName}`);
     
     // Upload file
