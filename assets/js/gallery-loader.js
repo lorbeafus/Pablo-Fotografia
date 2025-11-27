@@ -4,11 +4,19 @@ import { collection, query, where, getDocs } from "https://www.gstatic.com/fireb
 
 // Get category from page
 function getCurrentCategory() {
-    const path = window.location.pathname;
+    // Decode the URL to handle special characters like ñ
+    const path = decodeURIComponent(window.location.pathname);
+    console.log('Current path:', path); // Debug log
+    
     if (path.includes('bodas')) return 'bodas';
-    if (path.includes('15años') || path.includes('15anos')) return '15años';
+    if (path.includes('15años')) {
+        console.log('Detected 15años category'); // Debug log
+        return '15años';
+    }
     if (path.includes('vistas')) return 'vistas';
     if (path.includes('bookpro')) return 'books';
+    
+    console.log('No category detected'); // Debug log
     return null;
 }
 
