@@ -186,6 +186,117 @@ footer .social-icons a {
   text-decoration: none;
 }
 
+.light-effect-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #001300;
+  animation: cambioColor 5s linear infinite;
+}
+
+.light-effect-section .effect-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: scale(2.5);
+}
+
+.light-effect-section .img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  top: 5px;
+  left: 4px;
+  border-radius: 20%;
+  overflow: hidden;
+  z-index: 100;
+}
+.light-effect-section .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes cambioColor {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+.light-effect-section .loader {
+  position: relative;
+  display: flex;
+}
+
+.light-effect-section .dot {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #65fc01;
+  box-shadow: 0 0 10px #65fc01, 0 0 20px #65fc01, 0 0 40px #65fc01, 0 0 60px #65fc01, 0 0 80px #65fc01, 0 0 100px #65fc01;
+  margin: 20px 8px;
+  transform: scale(0.1);
+  border-radius: 50%;
+  animation: animateDot 2s linear infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+.light-effect-section .loader1 {
+  position: relative;
+  top: 80px;
+  left: 0;
+}
+
+.light-effect-section .loader2 {
+  position: relative;
+  transform: rotate(90deg);
+  top: 100px;
+  left: 95px;
+}
+
+.light-effect-section .loader3 {
+  position: relative;
+  transform: rotate(180deg);
+  left: 0;
+  top: -15px;
+  animation-delay: calc(-0.1s * var(--i));
+}
+
+.light-effect-section .loader4 {
+  position: relative;
+  transform: rotate(270deg);
+  left: -90px;
+  top: -160px;
+}
+
+@keyframes animateDot {
+  0% {
+    transform: scale(0.1);
+  }
+  10% {
+    transform: scale(1);
+  }
+  50%, 100% {
+    transform: scale(0.1);
+  }
+}
+@media (max-width: 768px) {
+  .light-effect-section .effect-wrapper {
+    transform: scale(1.5);
+  }
+}
 @media (max-width: 768px) {
   .hamburger {
     display: flex !important;
