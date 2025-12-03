@@ -21,7 +21,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transform: scale(2.5); // Aumentar el tamaño 2.5 veces
+    transform: scale(2); // Aumentar el tamaño 2.5 veces
 }
 
 .light-effect-section .img {
@@ -29,11 +29,11 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 200px; // Aumentado de 150px
-    height: 200px; // Aumentado de 150px
+    width: 700px; // Aumentado
+    height: 300px; // Aumentado
     top: 5px;
     left: 4px;
-    border-radius: 20%;
+    border-radius: 5%;
     overflow: hidden;
     z-index: 100;
     
