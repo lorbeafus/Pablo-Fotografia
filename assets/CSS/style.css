@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #1b1b1b;
+  background-color: rgb(28.7956521739, 33.4652173913, 42.8043478261);
   color: #ffffff;
   font-family: "Nunito", serif;
 }
@@ -98,6 +98,7 @@ body {
   width: 100%;
 }
 .catalogo .productos-contenedor .producto .img-box {
+  position: relative;
   width: 100%;
   height: 350px;
   overflow: hidden;
@@ -137,6 +138,59 @@ body {
   margin: 0 auto;
   width: 100%;
   max-width: 100%;
+}
+
+.profile-image-backlight {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+}
+.profile-image-backlight .image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.profile-image-backlight .image-wrapper:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(1.2);
+  -webkit-filter: blur(80px);
+  -moz-filter: blur(80px);
+  -ms-filter: blur(80px);
+  filter: blur(80px);
+  background: linear-gradient(270deg, #0fffc1, #7e0fff);
+  background-size: 200% 200%;
+  animation: animateGlow 10s ease infinite;
+}
+@keyframes animateGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.profile-image-backlight .image-wrapper img {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+  z-index: 10;
 }
 
 footer .footer-content {
@@ -186,117 +240,6 @@ footer .social-icons a {
   text-decoration: none;
 }
 
-.light-effect-section {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #001300;
-  animation: cambioColor 5s linear infinite;
-}
-
-.light-effect-section .effect-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transform: scale(2);
-}
-
-.light-effect-section .img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 700px;
-  height: 300px;
-  top: 5px;
-  left: 4px;
-  border-radius: 5%;
-  overflow: hidden;
-  z-index: 100;
-}
-.light-effect-section .img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@keyframes cambioColor {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}
-.light-effect-section .loader {
-  position: relative;
-  display: flex;
-}
-
-.light-effect-section .dot {
-  position: relative;
-  display: block;
-  width: 20px;
-  height: 20px;
-  background: #e95042;
-  box-shadow: 0 0 10px #e95042, 0 0 20px #e95042, 0 0 40px #e95042, 0 0 60px #e95042, 0 0 80px #e95042, 0 0 100px #e95042;
-  margin: 20px 8px;
-  transform: scale(0.1);
-  border-radius: 50%;
-  animation: animateDot 2s linear infinite;
-  animation-delay: calc(0.1s * var(--i));
-}
-
-.light-effect-section .loader1 {
-  position: relative;
-  top: 80px;
-  left: 0;
-}
-
-.light-effect-section .loader2 {
-  position: relative;
-  transform: rotate(90deg);
-  top: 100px;
-  left: 95px;
-}
-
-.light-effect-section .loader3 {
-  position: relative;
-  transform: rotate(180deg);
-  left: 0;
-  top: -15px;
-  animation-delay: calc(-0.1s * var(--i));
-}
-
-.light-effect-section .loader4 {
-  position: relative;
-  transform: rotate(270deg);
-  left: -90px;
-  top: -160px;
-}
-
-@keyframes animateDot {
-  0% {
-    transform: scale(0.1);
-  }
-  10% {
-    transform: scale(1);
-  }
-  50%, 100% {
-    transform: scale(0.1);
-  }
-}
-@media (max-width: 768px) {
-  .light-effect-section .effect-wrapper {
-    transform: scale(1.5);
-  }
-}
 @media (max-width: 768px) {
   .hamburger {
     display: flex !important;

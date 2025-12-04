@@ -16,7 +16,7 @@
 @use 'utilities/header';
 @use 'utilities/main';
 @use 'utilities/footer';
-@use 'utilities/light-effect';
+// @use 'utilities/light-effect'; // Comentado - efecto no utilizado
 
 // 5. Media queries 
 @use 'bases/queries';
