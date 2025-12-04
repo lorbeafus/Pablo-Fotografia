@@ -167,7 +167,7 @@ body {
   -moz-filter: blur(80px);
   -ms-filter: blur(80px);
   filter: blur(80px);
-  background: linear-gradient(270deg, #0fffc1, #7e0fff);
+  background: linear-gradient(270deg, #75706f, #ff0f0f);
   background-size: 200% 200%;
   animation: animateGlow 10s ease infinite;
 }

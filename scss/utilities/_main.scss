@@ -97,7 +97,7 @@
         display: inline-block;
 
         // Aplicar efecto backlight al wrapper de la imagen
-        @include backlight(0, 0, 80px, 1.2, #0fffc1, #7e0fff, 10s);
+        @include backlight(0, 0, 80px, 1.2, #75706f, #ff0f0f, 10s);
 
         img {
             position: relative;
