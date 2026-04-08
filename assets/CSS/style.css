@@ -21,6 +21,12 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .barra-navegacion {
   display: flex;
   justify-content: center;
@@ -413,6 +419,14 @@ footer .social-icons a {
 @media (max-width: 768px) {
   .hamburger {
     display: flex !important;
+  }
+  .header-top {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
   }
   .hamburger.active .hamburger__line:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
