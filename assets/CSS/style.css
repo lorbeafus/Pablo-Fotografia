@@ -416,6 +416,41 @@ footer .social-icons a {
   font-weight: bold;
 }
 
+.cta-section {
+  background: linear-gradient(135deg, rgba(183, 14, 14, 0.15) 0%, rgba(0, 0, 0, 0.8) 100%);
+  border-top: 1px solid rgba(183, 14, 14, 0.3);
+  border-bottom: 1px solid rgba(183, 14, 14, 0.3);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.cta-section .cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+.cta-section .cta-content h2 {
+  font-family: "Nunito", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+.cta-section .cta-content p {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+.cta-section .cta-content .btn-cta {
+  margin-top: 1rem;
+  font-size: 18px;
+  padding: 1.4rem 3rem;
+}
+
 @media (max-width: 768px) {
   .hamburger {
     display: flex !important;
