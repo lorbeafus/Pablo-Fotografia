@@ -305,6 +305,7 @@ footer .social-icons a {
   text-align: center;
 }
 .servicios h2 {
+  font-family: "nunito", serif;
   font-size: 40px;
   color: #ffffff;
   margin-bottom: 3rem;
@@ -325,12 +326,12 @@ footer .social-icons a {
 .servicios-container {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 2rem;
 }
 
 .servicios-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 @media (max-width: 768px) {
@@ -350,6 +351,8 @@ footer .social-icons a {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  text-decoration: none;
+  cursor: pointer;
 }
 .servicio-card .servicio-icon {
   font-size: 3rem;

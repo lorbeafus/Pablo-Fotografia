@@ -8,6 +8,7 @@
     text-align: center;
 
     h2 {
+        font-family: 'nunito', serif;
         font-size: $font-size-xxl;
         color: $tertiary-color;
         margin-bottom: 3rem;
@@ -30,12 +31,12 @@
 .servicios-container {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
 }
 
 .servicios-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     
     @media (max-width: $breakpoint-tablet) {
@@ -54,6 +55,8 @@
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    text-decoration: none; // porque ahora es un <a>
+    cursor: pointer;
 
     .servicio-icon {
         font-size: 3rem;
