@@ -536,4 +536,16 @@ footer .social-icons a {
   font-weight: 40px;
 }
 
-/*# sourceMappingURL=style.css.map */
+
+.admin-link {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.6;
+  font-size: 0.8rem;
+  transition: opacity 0.3s ease;
+}
+
+.admin-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
