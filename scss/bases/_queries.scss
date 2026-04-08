@@ -14,12 +14,29 @@
 
     .header-top {
         flex-direction: column;
-        gap: 1.5rem;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-logo {
+        gap: 0.8rem;
+
+        .nav-logo-text h1 {
+            font-size: $font-size-md !important;
+        }
+
+        .nav-logo-text p {
+            font-size: $font-size-sm !important;
+        }
     }
 
     .header-actions {
         width: 100%;
+        display: flex;
+        flex-direction: row;
         justify-content: space-between;
+        align-items: center;
     }
 
     // Animación del botón hamburguesa cuando está activo
