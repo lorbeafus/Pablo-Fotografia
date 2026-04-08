@@ -269,14 +269,14 @@ footer .social-icons a {
 .btn-cta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background-color: #b70e0e;
   color: #ffffff;
   padding: 1.2rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   font-family: "Nunito", sans-serif;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(183, 14, 14, 0.3);
@@ -355,7 +355,11 @@ footer .social-icons a {
   cursor: pointer;
 }
 .servicio-card .servicio-icon {
-  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+  color: #b70e0e;
 }
 .servicio-card h3 {
   font-family: "Nunito", sans-serif;

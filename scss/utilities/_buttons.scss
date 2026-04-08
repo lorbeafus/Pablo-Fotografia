@@ -3,14 +3,14 @@
 .btn-cta {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background-color: $primary-color;
     color: $tertiary-color;
     padding: 1.2rem 2.5rem;
     border-radius: 50px;
     text-decoration: none;
     font-size: $font-size-md;
-    font-weight: 700;
+    font-weight: 500;
     font-family: 'Nunito', sans-serif;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(183, 14, 14, 0.3);
