@@ -1,0 +1,112 @@
+@use '../bases/variables' as *;
+
+.servicios {
+    padding: 4rem 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+
+    h2 {
+        font-size: $font-size-xxl;
+        color: $tertiary-color;
+        margin-bottom: 3rem;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: $primary-color;
+        }
+    }
+}
+
+.servicios-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    
+    @media (max-width: $breakpoint-tablet) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.servicio-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    .servicio-icon {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-family: 'Nunito', sans-serif;
+        color: $tertiary-color;
+        font-size: $font-size-lg;
+        margin: 0;
+    }
+
+    &:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: $primary-color;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.beneficios-wrapper {
+    background: linear-gradient(135deg, rgba($primary-color, 0.1) 0%, rgba($secondary-color, 0) 100%);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px dashed rgba($primary-color, 0.3);
+}
+
+.beneficios-lista {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: $breakpoint-tablet) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding-left: 2rem;
+    }
+
+    li {
+        font-family: 'Nunito', sans-serif;
+        font-size: $font-size-lg;
+        color: $tertiary-color;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .check {
+            color: $primary-color;
+            font-weight: bold;
+        }
+    }
+}

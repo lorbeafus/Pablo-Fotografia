@@ -4,9 +4,18 @@
 
 @use '../bases/variables' as *;
 
-.barra-navegacion {
+.header-top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-color: $secondary-color;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.barra-navegacion {
+    display: flex;
+    justify-content: center;
     align-items: center;
     padding: 1rem;
     background-color: $secondary-color;
@@ -15,15 +24,33 @@
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    cursor: pointer;
 
-    h1 {
-        font-family: 'Nunito', serif;
-        font-size: $font-size-xxl;
-        font-weight: 700;
-        color: $tertiary-color;
+    .nav-logo-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.2rem;
+
+        h1 {
+            font-family: 'Nunito', serif;
+            font-size: $font-size-xl;
+            font-weight: 700;
+            color: $tertiary-color;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        p {
+            font-family: 'Nunito', serif;
+            font-size: $font-size-md;
+            font-weight: 400;
+            color: $tertiary-color;
+            margin: 0;
+            opacity: 0.9;
+        }
     }
-
 }
 
 // Enlaces de navegación
