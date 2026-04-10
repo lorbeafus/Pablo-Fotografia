@@ -9,7 +9,7 @@ function getCurrentCategory() {
     console.log('Current path:', path); // Debug log
     
     if (path.includes('bodas')) return 'bodas';
-    if (path.includes('15años')) {
+    if (path.includes('quince-anos')) {
         console.log('Detected 15años category'); // Debug log
         return '15años';
     }
