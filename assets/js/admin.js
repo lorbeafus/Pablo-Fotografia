@@ -1,5 +1,7 @@
 // Import Firebase modules (Authentication and Firestore only)
 import { auth, db } from './firebase-config.js';
+import '../../scss/style.scss';
+import '../../css/admin.css';
 import { 
     signInWithEmailAndPassword, 
     signOut, 

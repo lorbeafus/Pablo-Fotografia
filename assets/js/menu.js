@@ -1,6 +1,7 @@
 // ========================================
 // MENU HAMBURGUESA - MOBILE
 // ========================================
+import '../../scss/style.scss';
 
 // Obtener elementos del DOM
 const hamburger = document.getElementById('hamburger');

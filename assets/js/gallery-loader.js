@@ -1,4 +1,5 @@
 // Gallery Loader - Loads images from Firestore for public pages
+import '../../scss/style.scss';
 import { db } from './firebase-config.js';
 import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
