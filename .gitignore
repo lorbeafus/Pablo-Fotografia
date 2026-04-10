@@ -1,0 +1,12 @@
+# Configuración de Firebase y Claves
+.env
+assets/js/firebase-config.js
+
+# Dependencias
+node_modules/
+dist/
+
+# IDEs y otros
+.vscode/
+.DS_Store
+*.log
