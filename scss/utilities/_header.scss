@@ -57,6 +57,17 @@
             opacity: 0.9;
         }
     }
+
+    .subtitulo-nav {
+        font-family: 'Nunito', sans-serif;
+        font-size: $font-size-sm;
+        font-weight: 300;
+        color: $tertiary-color;
+        opacity: 0.75;
+        letter-spacing: 0.05em;
+        margin: 0;
+    }
+
 }
 
 // Enlaces de navegación
